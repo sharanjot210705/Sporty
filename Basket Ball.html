@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Basketball | The Art of Hoops — Speed, Skill & Glory</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, 'Inter', sans-serif;
+            background: #0a0c15;
+            color: #f0f3fa;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* modern gradient header with basketball energy */
+        header {
+            background: linear-gradient(135deg, #1e2a3a 0%, #0f1722 100%);
+            border-bottom: 2px solid rgba(255, 140, 0, 0.4);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "🏀";
+            font-size: 160px;
+            opacity: 0.08;
+            position: absolute;
+            bottom: -30px;
+            right: 10px;
+            pointer-events: none;
+            transform: rotate(10deg);
+        }
+
+        .marquee-text {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            background: linear-gradient(120deg, #fff, #ffa559, #ff6a00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            font-weight: 800;
+        }
+
+        /* modern navigation pills - glass effect */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 1rem 1.5rem;
+            background: rgba(15, 25, 40, 0.85);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 140, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        .nav-links a {
+            color: #fff4e6;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1.4rem;
+            border-radius: 40px;
+            transition: all 0.25s ease;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(4px);
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            background: #ff8c42;
+            color: #0a0c15;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(255, 140, 66, 0.4);
+        }
+
+        /* main container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.8rem;
+        }
+
+        /* card style sections — deep navy with orange accents */
+        .section-card {
+            background: rgba(18, 25, 45, 0.75);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            padding: 2rem 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 140, 0, 0.25);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .section-card:hover {
+            border-color: rgba(255, 140, 66, 0.6);
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff8c42, #ffbc6e);
+            margin: 0.6rem auto 0;
+            border-radius: 4px;
+        }
+
+        h2 {
+            font-size: 1.9rem;
+            margin: 1.5rem 0 1rem 0;
+            color: #ffbc6e;
+            border-left: 5px solid #ff8c42;
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin: 1.2rem 0 0.6rem;
+            color: #ffaa55;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            color: #e2e8f5;
+        }
+
+        /* images styling */
+        .img-wrapper {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .img-wrapper img {
+            max-width: 100%;
+            border-radius: 1.8rem;
+            box-shadow: 0 20px 30px -8px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255, 140, 0, 0.4);
+            transition: all 0.3s;
+            background: #11171f;
+        }
+
+        .img-wrapper img:hover {
+            transform: scale(1.01);
+            box-shadow: 0 25px 35px -8px black;
+        }
+
+        /* rule cards grid (basketball specific) */
+        .rule-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .rule-card {
+            background: #0f1625;
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            flex: 1 1 260px;
+            border-left: 4px solid #ff8c42;
+            transition: all 0.2s;
+        }
+
+        .rule-card strong {
+            color: #ffaa55;
+            font-size: 1.2rem;
+        }
+
+        /* equipment gallery style — basketball gear */
+        .equip-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        .equip-item {
+            background: #0e1424;
+            border-radius: 1.5rem;
+            padding: 1rem;
+            width: 260px;
+            text-align: center;
+            transition: all 0.25s;
+            border: 1px solid #2a3348;
+        }
+
+        .equip-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            background: #f5f5f5;
+        }
+
+        .equip-item h4 {
+            font-size: 1.3rem;
+            color: #ffbc6e;
+            margin-bottom: 0.5rem;
+        }
+
+        /* back to top button */
+        .go-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #ff8c42;
+            color: #0a0c15;
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 1rem 0 2rem;
+            transition: all 0.2s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .go-top:hover {
+            background: #ff9e2c;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px -5px rgba(255, 140, 66, 0.6);
+        }
+
+        footer {
+            background: linear-gradient(90deg, #07121c, #0b1922);
+            margin-top: 2rem;
+            padding: 1.5rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 140, 0, 0.4);
+            font-size: 0.9rem;
+            color: #b9c7d9;
+        }
+
+        /* responsive */
+        @media (max-width: 780px) {
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+            .nav-links {
+                gap: 0.8rem;
+            }
+            .nav-links a {
+                padding: 0.3rem 0.9rem;
+                font-size: 0.8rem;
+            }
+            .section-card {
+                padding: 1.2rem;
+            }
+        }
+
+        ul, .custom-list {
+            margin: 0.8rem 0 1rem 1.8rem;
+            color: #cdd9ff;
+        }
+        li {
+            margin: 0.4rem 0;
+        }
+        .badge {
+            background: #ff8c4220;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            display: inline-block;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div style="padding: 1.2rem 0 0.8rem 0; text-align: center;">
+        <marquee direction="left" scrollamount="8" behavior="scroll" style="color: white;">
+            <span class="marquee-text">🏀 <u>BASKETBALL</u> 🏀 &nbsp;|&nbsp; WHERE LEGENDS ARE MADE &nbsp;|&nbsp; NBA • FIBA • STREET</span>
+        </marquee>
+        <p style="font-size: 1rem; letter-spacing: 1px; padding-bottom: 12px; color: #ffcf9a;">Dribble • Shoot • Slam • Defend — Elevate Your Game</p>
+    </div>
+</header>
+
+<div class="nav-links">
+    <a href="#intro">🏀 Introduction</a>
+    <a href="#his">📜 History</a>
+    <a href="#rul">⚖️ Rules</a>
+    <a href="#equi">👟 Equipment</a>
+</div>
+
+<main class="container">
+    <!-- INTRODUCTION SECTION with basketball action image -->
+    <div class="section-card" id="intro">
+        <h1><u>🏆 INTRODUCTION TO BASKETBALL</u></h1>
+        <p><strong>Basketball</strong> is a high-octane sport played between two teams of five players each, aiming to score points by shooting a ball through the opponent's hoop. Invented as a winter indoor activity, it has grown into a global phenomenon — from the dazzling courts of the NBA to streetball courts in every corner of the world. With breathtaking dunks, pinpoint passing, and buzzer-beating drama, basketball combines athleticism, strategy, and pure adrenaline.</p>
+        <p>Today, basketball is one of the most-watched sports on the planet. The NBA (National Basketball Association) features icons like LeBron James, Stephen Curry, and Giannis Antetokounmpo, while international competitions like the FIBA World Cup and the Olympic Games showcase national pride. Whether it's a fast break or a lockdown defense, the sport rewards creativity and teamwork.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/LeBron_James_%2851979977091%29_%28cropped%29.jpg/800px-LeBron_James_%2851979977091%29_%28cropped%29.jpg" alt="NBA action - LeBron James driving to the basket" loading="lazy">
+            <p class="badge" style="margin-top: 8px;">🔥 NBA icon LeBron James — legacy in motion</p>
+        </div>
+        <p>Points are scored by field goals (2 or 3 points depending on distance) and free throws (1 point). A game consists of four quarters (12 minutes in NBA, 10 in FIBA). Basketball demands explosive speed, vertical leap, court vision, and relentless conditioning. From high school gyms to packed arenas, the spirit of basketball unites millions across North America, Europe, Asia, and beyond.</p>
+    </div>
+
+    <!-- HISTORY SECTION with James Naismith image -->
+    <div class="section-card" id="his">
+        <h1><u>📖 HISTORY OF BASKETBALL</u></h1>
+        <p>In December 1891, Dr. <strong>James Naismith</strong>, a Canadian physical education instructor in Springfield, Massachusetts, was tasked with creating an indoor sport to keep athletes active during winter. He nailed a peach basket onto a 10-foot elevated track and invented 13 basic rules. The first game used a soccer ball, and the term "basket ball" was born.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/James_Naismith_%28cropped%29.jpg/500px-James_Naismith_%28cropped%29.jpg" alt="Dr. James Naismith, inventor of basketball" loading="lazy">
+            <p class="badge">🏅 Dr. James Naismith — creator of the game (1891)</p>
+        </div>
+        <p>The sport spread rapidly through YMCA centers and colleges. By 1936, basketball made its Olympic debut in Berlin. The NBA was founded in 1946 (originally BAA) and evolved into a cultural powerhouse, introducing legends like Bill Russell, Magic Johnson, Michael Jordan, Kobe Bryant, and today's superstars. The 1992 "Dream Team" — featuring Jordan, Bird, and Magic — catapulted global interest to new heights.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Michael_Jordan_Lipofsky.jpg/500px-Michael_Jordan_Lipofsky.jpg" alt="Michael Jordan in action" loading="lazy">
+            <p class="badge">🐐 Michael Jordan — global icon who elevated basketball's popularity</p>
+        </div>
+        <p>Women's basketball grew alongside, with the WNBA launching in 1996, inspiring generations. Today, FIBA governs international competition, and the NBA Finals, March Madness, and EuroLeague capture millions of fans worldwide. The sport's fast pace and accessibility make it a universal language.</p>
+        <p>🏀 <em>Did you know?</em> The first official basketball game used peach baskets as hoops, and someone had to retrieve the ball manually after each score!</p>
+    </div>
+
+    <!-- RULES SECTION with court diagram and action images -->
+    <div class="section-card" id="rul">
+        <h1><u>📏 OFFICIAL RULES & REGULATIONS</u></h1>
+        <p>Based on FIBA and NBA rulebooks, basketball features dynamic regulations that keep the game fluid and exciting.</p>
+        
+        <h2>🏟️ Court & Dimensions</h2>
+        <p>The court is a rectangle measuring 28m x 15m (FIBA) or 94ft x 50ft (NBA). The hoop stands 3.05 meters (10 ft) high. Key zones: three-point arc, paint (key), free-throw line, and half-court. A shot behind the arc yields 3 points.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Basketball_court_dimensions.svg/800px-Basketball_court_dimensions.svg.png" alt="Basketball court diagram with markings" loading="lazy">
+            <p class="badge">📐 Official basketball court dimensions (FIBA/NBA standards)</p>
+        </div>
+        
+        <h2>⏱️ Game Structure & Key Rules</h2>
+        <div class="rule-grid">
+            <div class="rule-card"><strong>⏲️ Shot clock</strong><br>NBA: 24 seconds to attempt a shot; NCAA: 30 sec. Increases pace and strategy.</div>
+            <div class="rule-card"><strong>🚶 Traveling</strong><br>Players must dribble while moving. Taking too many steps without dribbling results in a turnover.</div>
+            <div class="rule-card"><strong>🤚 Fouls & Free throws</strong><br>Personal fouls limit contact. After 5 (FIBA) or 6 (NBA) fouls, player fouls out. Bonus free throws awarded after team foul limit.</div>
+            <div class="rule-card"><strong>⛹️‍♂️ Backcourt violation</strong><br>Once past half-court, the offense cannot return to the backcourt.</div>
+        </div>
+        
+        <h2>🏀 Scoring & Overtime</h2>
+        <p>A field goal inside the three-point line = 2 points; beyond the arc = 3 points; free throw = 1 point. If tied at the end of regulation, overtime periods (5 minutes) are played until a winner emerges. Substitutions are unlimited and occur during stoppages.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Free_throw_%28basketball%29.jpg/600px-Free_throw_%28basketball%29.jpg" alt="Player taking free throw shot" loading="lazy">
+            <p class="badge">🎯 Free throw — fundamental scoring opportunity</p>
+        </div>
+        <p>Defensive three-second violation (NBA) prevents defenders from camping in the paint, ensuring offensive flow. Goaltending is prohibited: blocking a shot on its downward arc awards points to the offense.</p>
+    </div>
+
+    <!-- EQUIPMENT SECTION with basketball gear images -->
+    <div class="section-card" id="equi">
+        <h1><u>🛠️ BASKETBALL EQUIPMENT & GEAR</u></h1>
+        <p>From the ball to high-performance sneakers, equipment shapes the modern game. Precision, comfort, and durability are key for elite performance.</p>
+        
+        <div class="equip-grid">
+            <div class="equip-item">
+                <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=500&auto=format" alt="Professional basketball" loading="lazy">
+                <h4>🏀 Basketball</h4>
+                <p>Size 7 (men's) 29.5 inches circumference; size 6 for women. Genuine leather (indoor) or composite rubber (outdoor). Grip and bounce precision matter.</p>
+            </div>
+            <div class="equip-item">
+                <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&auto=format" alt="Basketball shoes" loading="lazy">
+                <h4>👟 Performance Shoes</h4>
+                <p>High-top or low-cut sneakers with responsive cushioning and herringbone traction patterns for sharp cuts. Brands like Nike, Adidas, and Under Armour dominate.</p>
+            </div>
+            <div class="equip-item">
+                <img src="https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=500&auto=format" alt="Basketball jersey" loading="lazy">
+                <h4>👕 Uniform</h4>
+                <p>Lightweight, moisture-wicking jersey and shorts for unrestricted movement. Advanced fabrics reduce sweat and enhance breathability during high-intensity games.</p>
+            </div>
+            <div class="equip-item">
+                <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=500&auto=format" alt="Basketball hoop system" loading="lazy">
+                <h4>🏀 Hoop & Rim</h4>
+                <p>Breakaway rims (NBA) absorb dunks. Backboards: tempered glass for pro, polycarbonate for recreational. Height adjustable systems for youth development.</p>
+            </div>
+        </div>
+        
+        <h2>🧢 Accessories & Training Aids</h2>
+        <p>Shooting sleeves, knee pads, compression gear, and ankle braces help prevent injuries. Advanced training tools include resistance parachutes for speed, dribble goggles, and shooting machines. Athletes also rely on smart wearables to monitor workload and heart rate.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Stephen_Curry_Shooting_%28cropped%29.jpg/600px-Stephen_Curry_Shooting_%28cropped%29.jpg" alt="Stephen Curry shooting form" loading="lazy" style="max-width: 480px;">
+            <p class="badge">🎯 Stephen Curry — revolutionizing shooting with elite equipment & mechanics</p>
+        </div>
+        <p>Whether you're a point guard or a center, investing in proper gear boosts performance and safety. Indoor vs outdoor basketballs, court shoes with multi-directional grip, and moisture-wicking apparel make every possession count.</p>
+        
+        <h2>🏆 Iconic Basketball Arenas</h2>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Staples_Center_%28cropped%29.jpg/800px-Staples_Center_%28cropped%29.jpg" alt="Crypto.com Arena (formerly Staples Center) in Los Angeles" loading="lazy">
+            <p class="badge">🏟️ Crypto.com Arena — legendary home of the Los Angeles Lakers</p>
+        </div>
+    </div>
+    
+    <!-- extra fun facts / basketball legacy with slam dunk image -->
+    <div style="background: linear-gradient(145deg, #10182c, #0a1122); border-radius: 1.8rem; padding: 1.5rem; margin-bottom: 2rem; border-left: 6px solid #ff8c42;">
+        <h3 style="margin: 0 0 0.5rem 0;">💡 Hoops Legends & Milestones</h3>
+        <p>🏆 Most NBA championships: Bill Russell (11 titles with Boston Celtics).<br>
+        🏀 All-time scoring leader: LeBron James (surpassing Kareem Abdul-Jabbar).<br>
+        🌍 Basketball was included in the Olympics since 1936, and the USA Dream Team (1992) changed global basketball forever.<br>
+        🚀 Highest vertical leap recorded: over 48 inches (Michael Jordan, Zion Williamson caliber).<br>
+        🎮 March Madness (NCAA) draws over 10 million viewers annually — a cultural spectacle.</p>
+        <div class="img-wrapper" style="margin-top: 1rem;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Vince_Carter_dunk_%28cropped%29.jpg/600px-Vince_Carter_dunk_%28cropped%29.jpg" alt="Vince Carter performing a slam dunk" loading="lazy" style="max-width: 450px;">
+            <p class="badge">✈️ Vince Carter — one of the greatest dunkers in NBA history</p>
+        </div>
+    </div>
+    
+    <div style="text-align: center;">
+        <a href="#" class="go-top" id="backToTopBtn">⬆️ BACK TO TOP</a>
+    </div>
+</main>
+
+<footer>
+    <p>🏀 <strong>HOOPS HUB</strong> — Celebrating basketball's past, present, and future. Elevate your game.</p>
+    <p>&copy; 2026 Basketball Legacy | FIBA & NBA Official References | #BallIsLife</p>
+    <p style="font-size: 0.8rem; margin-top: 0.5rem;">🏆 “Talent wins games, but teamwork and intelligence win championships.” — Michael Jordan</p>
+</footer>
+
+<script>
+    // smooth scroll for anchor links and back to top
+    document.querySelectorAll('.nav-links a, .go-top').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if(targetId === '#') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } 
+            else if(targetId && targetId !== '#') {
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+
+    // additional safety for back to top button
+    const topBtn = document.getElementById('backToTopBtn');
+    if(topBtn) {
+        topBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+</script>
+
+</body>
+</html>

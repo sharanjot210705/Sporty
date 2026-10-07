@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Tennis | The Art of the Racquet — Power, Precision & Legacy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, 'Inter', sans-serif;
+            background: #07150e;
+            color: #eef5e8;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* modern gradient header with tennis energy */
+        header {
+            background: linear-gradient(135deg, #1a3a2a 0%, #0a1f15 100%);
+            border-bottom: 2px solid rgba(210, 180, 70, 0.5);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "🎾";
+            font-size: 160px;
+            opacity: 0.08;
+            position: absolute;
+            bottom: -30px;
+            right: 10px;
+            pointer-events: none;
+            transform: rotate(10deg);
+        }
+
+        .marquee-text {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            background: linear-gradient(120deg, #fff, #e6d5a8, #c9a53b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            font-weight: 800;
+        }
+
+        /* modern navigation pills - glass effect */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 1rem 1.5rem;
+            background: rgba(10, 35, 25, 0.88);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(210, 180, 70, 0.4);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        .nav-links a {
+            color: #fff6e0;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1.4rem;
+            border-radius: 40px;
+            transition: all 0.25s ease;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(4px);
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            background: #c9a53b;
+            color: #07150e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(201, 165, 59, 0.4);
+        }
+
+        /* main container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.8rem;
+        }
+
+        /* card style sections — deep forest with gold accents */
+        .section-card {
+            background: rgba(15, 35, 25, 0.7);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            padding: 2rem 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(210, 180, 70, 0.3);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .section-card:hover {
+            border-color: rgba(210, 180, 70, 0.7);
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #c9a53b, #ecd972);
+            margin: 0.6rem auto 0;
+            border-radius: 4px;
+        }
+
+        h2 {
+            font-size: 1.9rem;
+            margin: 1.5rem 0 1rem 0;
+            color: #ecd972;
+            border-left: 5px solid #c9a53b;
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin: 1.2rem 0 0.6rem;
+            color: #e0c87c;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            color: #e2f0e6;
+        }
+
+        /* images styling */
+        .img-wrapper {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .img-wrapper img {
+            max-width: 100%;
+            border-radius: 1.8rem;
+            box-shadow: 0 20px 30px -8px rgba(0,0,0,0.6);
+            border: 1px solid rgba(210, 180, 70, 0.5);
+            transition: all 0.3s;
+            background: #1e2d24;
+        }
+
+        .img-wrapper img:hover {
+            transform: scale(1.01);
+            box-shadow: 0 25px 35px -8px black;
+        }
+
+        /* rule cards grid (tennis specific) */
+        .rule-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .rule-card {
+            background: #0b2119;
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            flex: 1 1 260px;
+            border-left: 4px solid #c9a53b;
+            transition: all 0.2s;
+        }
+
+        .rule-card strong {
+            color: #ecd972;
+            font-size: 1.2rem;
+        }
+
+        /* equipment gallery style — tennis gear */
+        .equip-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        .equip-item {
+            background: #0e251c;
+            border-radius: 1.5rem;
+            padding: 1rem;
+            width: 260px;
+            text-align: center;
+            transition: all 0.25s;
+            border: 1px solid #3b5a48;
+        }
+
+        .equip-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            background: #f5f5f5;
+        }
+
+        .equip-item h4 {
+            font-size: 1.3rem;
+            color: #ecd972;
+            margin-bottom: 0.5rem;
+        }
+
+        /* back to top button */
+        .go-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #c9a53b;
+            color: #07150e;
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 1rem 0 2rem;
+            transition: all 0.2s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .go-top:hover {
+            background: #dcb956;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px -5px rgba(201, 165, 59, 0.6);
+        }
+
+        footer {
+            background: linear-gradient(90deg, #082015, #0a2a1c);
+            margin-top: 2rem;
+            padding: 1.5rem;
+            text-align: center;
+            border-top: 1px solid rgba(210, 180, 70, 0.5);
+            font-size: 0.9rem;
+            color: #cbddc6;
+        }
+
+        /* responsive */
+        @media (max-width: 780px) {
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+            .nav-links {
+                gap: 0.8rem;
+            }
+            .nav-links a {
+                padding: 0.3rem 0.9rem;
+                font-size: 0.8rem;
+            }
+            .section-card {
+                padding: 1.2rem;
+            }
+        }
+
+        ul, .custom-list {
+            margin: 0.8rem 0 1rem 1.8rem;
+            color: #d2f0df;
+        }
+        li {
+            margin: 0.4rem 0;
+        }
+        .badge {
+            background: #c9a53b20;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            display: inline-block;
+            font-weight: 500;
+        }
+        .stat-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+            margin: 1.8rem 0;
+        }
+        .stat-card {
+            background: #0f2a1f;
+            border-radius: 1.5rem;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            min-width: 140px;
+            border-bottom: 3px solid #c9a53b;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ecd972;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div style="padding: 1.2rem 0 0.8rem 0; text-align: center;">
+        <marquee direction="left" scrollamount="8" behavior="scroll" style="color: white;">
+            <span class="marquee-text">🎾 <u>TENNIS</u> 🎾 &nbsp;|&nbsp; WHERE LEGENDS ARE FORGED &nbsp;|&nbsp; GRAND SLAMS • ATP • WTA • CLAY•GRASS•HARD</span>
+        </marquee>
+        <p style="font-size: 1rem; letter-spacing: 1px; padding-bottom: 12px; color: #e8e0b0;">Serve • Rally • Volley • Ace — Master the Court</p>
+    </div>
+</header>
+
+<div class="nav-links">
+    <a href="#intro">🎾 Introduction</a>
+    <a href="#his">📜 History</a>
+    <a href="#rul">⚖️ Rules</a>
+    <a href="#equi">🏆 Gear & Surfaces</a>
+</div>
+
+<main class="container">
+    <!-- INTRODUCTION SECTION with tennis action image -->
+    <div class="section-card" id="intro">
+        <h1><u>🏆 INTRODUCTION TO TENNIS</u></h1>
+        <p><strong>Tennis</strong> is a timeless racquet sport played between two individuals (singles) or two pairs (doubles). The objective is to strike the ball over a net into the opponent's court, making it impossible to return. Combining explosive movement, pinpoint accuracy, and mental resilience, tennis is one of the world's most elegant yet physically demanding sports.</p>
+        <p>From the pristine lawns of Wimbledon to the electric atmosphere of the US Open, tennis captivates millions. The ATP (men) and WTA (women) tours feature icons like Novak Djokovic, Carlos Alcaraz, Iga Świątek, and Serena Williams, whose legacies transcend the sport. With four distinct Grand Slams—Australian Open, Roland Garros, Wimbledon, US Open—each surface (hard, clay, grass) tests different skills, creating a unique spectacle.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Roger_Federer_%2851752588676%29_%28cropped%29.jpg/800px-Roger_Federer_%2851752588676%29_%28cropped%29.jpg" alt="Roger Federer forehand action on grass court" loading="lazy">
+            <p class="badge">🎾 Roger Federer — elegance and precision personified</p>
+        </div>
+        <p>Scoring is unique: 15, 30, 40, game. A player must win six games (by a margin of two) to take a set, and best-of-three or five sets decides the match. Tennis demands speed, agility, tactical intelligence, and relentless conditioning. From public parks to Centre Court, the spirit of tennis unites generations across Europe, Americas, Asia and beyond.</p>
+    </div>
+
+    <!-- HISTORY SECTION with origins and legends -->
+    <div class="section-card" id="his">
+        <h1><u>📜 HISTORY OF TENNIS</u></h1>
+        <p>The origins trace back to 12th-century France, where a handball game called "jeu de paume" evolved. By the 16th century, racquets were introduced, and "royal tennis" gained popularity among European nobility. Modern lawn tennis was patented in 1874 by Major Walter Clopton Wingfield, who laid out the rules that resemble today’s game.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Jeu_de_paume.jpg/600px-Jeu_de_paume.jpg" alt="Historical jeu de paume painting" loading="lazy">
+            <p class="badge">🏛️ Jeu de paume — the medieval predecessor of tennis</p>
+        </div>
+        <p>The All England Croquet Club held the first Wimbledon Championship in 1877, making it the oldest tennis tournament. The Open Era began in 1968, allowing professionals to compete alongside amateurs, sparking the golden age of tennis. Legends like Billie Jean King, Rod Laver, Martina Navratilova, Björn Borg, and later Pete Sampras, Steffi Graf, the Williams sisters, and the Big Three (Federer, Nadal, Djokovic) elevated the sport to global heights.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Serena_Williams_2019_%28cropped%29.jpg/600px-Serena_Williams_2019_%28cropped%29.jpg" alt="Serena Williams serving" loading="lazy">
+            <p class="badge">👑 Serena Williams — 23 Grand Slam singles titles, an icon of power</p>
+        </div>
+        <p>Women's tennis gained massive visibility through the WTA founded by Billie Jean King in 1973. Today, the Davis Cup, Billie Jean King Cup, and the four majors define the pinnacle of achievement. Tennis continues to evolve with modern racquet technology and analytics.</p>
+        <div class="stat-grid">
+            <div class="stat-card"><div class="stat-number">24</div><div>Grand Slams (Djokovic)</div></div>
+            <div class="stat-card"><div class="stat-number">14</div><div>Roland Garros titles (Nadal)</div></div>
+            <div class="stat-card"><div class="stat-number">23</div><div>Singles Slams (Serena)</div></div>
+            <div class="stat-card"><div class="stat-number">1877</div><div>First Wimbledon</div></div>
+        </div>
+        <p>🎾 <em>Did you know?</em> The original tennis balls were made of wool or leather stuffed with hair or wool, and the game was played indoors with a different scoring system.</p>
+    </div>
+
+    <!-- RULES SECTION with court diagram and scoring specifics -->
+    <div class="section-card" id="rul">
+        <h1><u>📏 OFFICIAL RULES & SCORING</u></h1>
+        <p>Based on ITF (International Tennis Federation) regulations, tennis combines tradition with dynamic action.</p>
+        
+        <h2>🏟️ Court Dimensions & Surfaces</h2>
+        <p>The court is a rectangle: 23.77m (78ft) long. For singles, width is 8.23m (27ft); doubles adds 1.37m alleys. The net is 0.914m (3ft) high at the center. Surfaces define gameplay: clay (slow, high bounce), grass (fast, low bounce), and hard court (medium pace, consistent).</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Tennis_court_metric.svg/800px-Tennis_court_metric.svg.png" alt="Tennis court diagram with markings" loading="lazy">
+            <p class="badge">📐 Official tennis court dimensions (ITF standard)</p>
+        </div>
+        
+        <h2>🎯 Scoring & Game Structure</h2>
+        <div class="rule-grid">
+            <div class="rule-card"><strong>🏅 Points progression</strong><br>Love (0) → 15 → 30 → 40 → Game. Deuce occurs at 40-40; a player must win two consecutive points to secure the game.</div>
+            <div class="rule-card"><strong>📆 Sets & Matches</strong><br>Standard matches are best-of-three sets (women, most men's events). Grand Slam men play best-of-five. Tiebreak at 6-6 (except final sets at some majors).</div>
+            <div class="rule-card"><strong>🔄 Serve rules</strong><br>Players alternate serves each game. Two service attempts per point; a fault if the ball misses the service box. Double fault loses the point.</div>
+            <div class="rule-card"><strong>🚫 Let & Foot faults</strong><br>A let (serve clips net but lands in) is replayed. Foot fault occurs if server steps on baseline before contact.</div>
+        </div>
+        
+        <h2>🏆 Key Rules & Line Calling</h2>
+        <p>Balls landing on lines are considered "in." Players cannot touch the net or cross into opponent's side. Hawk-Eye electronic review is used in major tournaments to challenge line calls (3 challenges per set). In doubles, teamwork and positioning expand the court coverage. The ball must bounce only once per side, and volleys are allowed except on the serve.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Carlos_Alcaraz_2022_UG_%28cropped%29.jpg/600px-Carlos_Alcaraz_2022_UG_%28cropped%29.jpg" alt="Carlos Alcaraz hitting a forehand" loading="lazy">
+            <p class="badge">🌟 Carlos Alcaraz — modern athleticism & powerful groundstrokes</p>
+        </div>
+        <p>Professional tennis also enforces time violations (25-second shot clock) and code violations for unsportsmanlike conduct. The let-cord rule on serve was modernized in some events with no-let on serves, but traditional let calls remain standard.</p>
+    </div>
+
+    <!-- EQUIPMENT & GEAR SECTION with tennis essentials -->
+    <div class="section-card" id="equi">
+        <h1><u>🛠️ TENNIS EQUIPMENT & SURFACES</u></h1>
+        <p>From racquet innovation to specialized shoes, gear defines performance and style. Modern tennis blends high-tech materials with heritage aesthetics.</p>
+        
+        <div class="equip-grid">
+            <div class="equip-item">
+                <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=500&auto=format" alt="Modern tennis racquet" loading="lazy">
+                <h4>🎾 Racquet</h4>
+                <p>Graphite composite frames, head sizes 95-110 sq in. Strings: polyester for spin, natural gut for feel. Weight, balance, and grip size customized for each player.</p>
+            </div>
+            <div class="equip-item">
+                <img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1f0?w=500&auto=format" alt="Tennis shoes on court" loading="lazy">
+                <h4>👟 Court Shoes</h4>
+                <p>Herringbone tread for clay, durable outsoles for hard courts, and gentle grip for grass. Advanced cushioning and lateral support prevent injuries.</p>
+            </div>
+            <div class="equip-item">
+                <img src="https://images.unsplash.com/photo-1605281317010-fe5ffe798166?w=500&auto=format" alt="Professional tennis balls" loading="lazy">
+                <h4>🎾 Tennis Balls</h4>
+                <p>Pressurized felt-covered rubber balls. Type 1 (fast), Type 2 (medium, standard), Type 3 (slow). Balls are changed after 7-9 games in pro play.</p>
+            </div>
+            <div class="equip-item">
+                <img src="https://images.unsplash.com/photo-1575428652377-a2d80e2277e5?w=500&auto=format" alt="Wimbledon grass court" loading="lazy">
+                <h4>🌱 Court Surfaces</h4>
+                <p>Clay (Roland Garros): sliding, high topspin. Grass (Wimbledon): fast, low bounce. Hard (US Open/AO): balanced, speed and bounce consistency.</p>
+            </div>
+        </div>
+        
+        <h2>🧢 Apparel & Accessories</h2>
+        <p>Moisture-wicking polos, skirts, and shorts engineered for breathability. Wristbands, headbands, and caps manage sweat. Advanced players use vibration dampeners, overgrips, and customized strings. Pro-level gear often includes sponsorship branding, and technology such as smart sensors track swing metrics.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Iga_%C5%9Awi%C4%85tek_%28cropped%29.jpg/600px-Iga_%C5%9Awi%C4%85tek_%28cropped%29.jpg" alt="Iga Świątek clay court celebration" loading="lazy" style="max-width: 480px;">
+            <p class="badge">🏆 Iga Świątek — dominant on clay, precision and intensity</p>
+        </div>
+        <p>Wearable tech like GPS trackers and heart rate monitors help athletes optimize training. Top players also rely on custom string tensions (typically 45-65 lbs) to balance power and control.</p>
+        
+        <h2>🏟️ Iconic Tennis Venues</h2>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Centre_Court%2C_Wimbledon_%28cropped%29.jpg/800px-Centre_Court%2C_Wimbledon_%28cropped%29.jpg" alt="Wimbledon Centre Court" loading="lazy">
+            <p class="badge">🌿 Wimbledon — the most prestigious grass court championship since 1877</p>
+        </div>
+    </div>
+    
+    <!-- extra facts & records section -->
+    <div style="background: linear-gradient(145deg, #11271e, #0a1f16); border-radius: 1.8rem; padding: 1.5rem; margin-bottom: 2rem; border-left: 6px solid #c9a53b;">
+        <h3 style="margin: 0 0 0.5rem 0;">💡 Tennis Milestones & Records</h3>
+        <p>🏆 Most Grand Slam singles titles (men): Novak Djokovic — 24.<br>
+        🎾 Most Wimbledon titles (men): Roger Federer — 8; (women): Martina Navratilova — 9.<br>
+        🌍 Longest match in history: John Isner def. Nicolas Mahut at Wimbledon 2010 — 11 hours 5 minutes over 3 days.<br>
+        🔥 Fastest serve recorded: 263 km/h (163.4 mph) by Sam Groth.<br>
+        💪 The “Golden Slam” (all four majors + Olympic gold in same year) achieved only by Steffi Graf in 1988.<br>
+        🏅 Billie Jean King won the "Battle of the Sexes" in 1973, a landmark moment for gender equality in sports.</p>
+        <div class="img-wrapper" style="margin-top: 1rem;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Rafael_Nadal_2011_%28cropped%29.jpg/600px-Rafael_Nadal_2011_%28cropped%29.jpg" alt="Rafael Nadal sliding on clay" loading="lazy" style="max-width: 450px;">
+            <p class="badge">🐂 Rafael Nadal — the "King of Clay" with 14 French Open titles</p>
+        </div>
+    </div>
+    
+    <div style="text-align: center;">
+        <a href="#" class="go-top" id="backToTopBtn">⬆️ BACK TO TOP</a>
+    </div>
+</main>
+
+<footer>
+    <p>🎾 <strong>ACE HUB</strong> — Celebrating tennis tradition, modern greatness & the future of the sport.</p>
+    <p>&copy; 2026 Tennis Legacy | ITF & Grand Slam References | #TennisForever</p>
+    <p style="font-size: 0.8rem; margin-top: 0.5rem;">🏆 “The key is to keep company only with people who uplift you, whose presence calls forth your best.” — Stefan Edberg</p>
+</footer>
+
+<script>
+    // smooth scroll for anchor links and back to top
+    document.querySelectorAll('.nav-links a, .go-top').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if(targetId === '#') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } 
+            else if(targetId && targetId !== '#') {
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+
+    // additional safety for back to top button
+    const topBtn = document.getElementById('backToTopBtn');
+    if(topBtn) {
+        topBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+</script>
+
+</body>
+</html>

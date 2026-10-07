@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportsHub | Your Ultimate Sports Destination</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9edf2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            transition: all 0.3s ease;
+            border-radius: 25px;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .separator {
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 300;
+        }
+
+        /* Main Title */
+        .hero-section {
+            text-align: center;
+            padding: 3rem 1rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin-bottom: 2rem;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #ffd89b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Sports Grid */
+        .sports-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            flex: 1;
+        }
+
+        .sports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .sport-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            animation: fadeInUp 0.6s ease backwards;
+        }
+
+        .sport-card:nth-child(1) { animation-delay: 0.1s; }
+        .sport-card:nth-child(2) { animation-delay: 0.2s; }
+        .sport-card:nth-child(3) { animation-delay: 0.3s; }
+        .sport-card:nth-child(4) { animation-delay: 0.4s; }
+        .sport-card:nth-child(5) { animation-delay: 0.5s; }
+        .sport-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .sport-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .sport-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .sport-card:hover .sport-image {
+            transform: scale(1.05);
+        }
+
+        .sport-info {
+            padding: 1.5rem;
+            text-align: center;
+            background: white;
+        }
+
+        .sport-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .sport-desc {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        /* Featured Section (Second Row) */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 1rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            margin-top: auto;
+            padding: 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .contact-link {
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .email-link {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .nav-container {
+                justify-content: center;
+            }
+            
+            .sports-container {
+                padding: 1rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-info {
+                justify-content: center;
+            }
+        }
+
+        /* Button Style */
+        .explore-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .explore-btn:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="sports.html" class="nav-link">🏠 Home</a>
+            <span class="separator">|</span>
+            <a href="Cricket.html" class="nav-link">🏏 Cricket</a>
+            <span class="separator">|</span>
+            <a href="Badmintion.html" class="nav-link">🏸 Badminton</a>
+            <span class="separator">|</span>
+            <a href="Football.html" class="nav-link">⚽ Football</a>
+            <span class="separator">|</span>
+            <a href="Basket Ball.html" class="nav-link">🏀 Basketball</a>
+            <span class="separator">|</span>
+            <a href="Tennis.html" class="nav-link">🎾 Tennis</a>
+            <span class="separator">|</span>
+            <a href="Login.html" class="nav-link">🔑 Login</a>
+        </div>
+    </header>
+
+    <div class="hero-section">
+        <h1 class="hero-title">SPORTS </h1>
+   
+    </div>
+
+    <div class="sports-container">
+        <!-- First Row: Badminton, Cricket, Tennis -->
+        <div class="sports-grid">
+            <a href="Badmintion.html" class="sport-card">
+                <img class="sport-image" src="https://images.unsplash.com/photo-1613918108466-2923d9f2f678?w=400&h=300&fit=crop" 
+                     alt="Badminton" onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREv8VDYOOXi4MT4xvwfQe4pqaGE4K13Z_6Zw&s'">
+                <div class="sport-info">
+                    <h3 class="sport-name">🏸 Badminton</h3>
+                    <p class="sport-desc">Fast-paced racket sport • Agility & precision</p>
+                    <span class="explore-btn">Explore →</span>
+                </div>
+            </a>
+
+            <a href="Cricket.html" class="sport-card">
+                <img class="sport-image" src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=400&h=300&fit=crop" 
+                     alt="Cricket" onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkVMvRXWyC5LMqfjU8R2ofA7zz__JrU7QSVw&s'">
+                <div class="sport-info">
+                    <h3 class="sport-name">🏏 Cricket</h3>
+                    <p class="sport-desc">Gentleman's game • Bat, ball & strategy</p>
+                    <span class="explore-btn">Explore →</span>
+                </div>
+            </a>
+
+            <a href="Tennis.html" class="sport-card">
+                <img class="sport-image" src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=400&h=300&fit=crop" 
+                     alt="Tennis" onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWB3Id56xqqI8IiP_aXVpy8gSPyfiKe1YPNg&s'">
+                <div class="sport-info">
+                    <h3 class="sport-name">🎾 Tennis</h3>
+                    <p class="sport-desc">Grand slam action • Power & elegance</p>
+                    <span class="explore-btn">Explore →</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Second Row: Football, Basketball -->
+        <div class="featured-grid">
+            <a href="Football.html" class="sport-card">
+                <img class="sport-image" src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=400&h=300&fit=crop" 
+                     alt="Football" onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRarCN3qTcLaejBQf3GxBS1xDceNoegtfLvmQ&s'">
+                <div class="sport-info">
+                    <h3 class="sport-name">⚽ Football</h3>
+                    <p class="sport-desc">The beautiful game • Teamwork & passion</p>
+                    <span class="explore-btn">Explore →</span>
+                </div>
+            </a>
+
+            <a href="Basket Ball.html" class="sport-card">
+                <img class="sport-image" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=300&fit=crop" 
+                     alt="Basketball" onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9nOfdudpnStuZNAeZLdA53pevOIh9bbkPFw&s'">
+                <div class="sport-info">
+                    <h3 class="sport-name">🏀 Basketball</h3>
+                    <p class="sport-desc">Slam dunk • Speed & vertical leap</p>
+                    <span class="explore-btn">Explore →</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="copyright">
+                © 2026 Sports|AllRightsReserved
+            </div>
+            <div class="contact-info">
+                <a href="tel:7652802909" class="contact-link">
+                    📞 +91 7652802909
+                </a>
+                <a href="tel:9779042812" class="contact-link">
+                    📞 +91 9779042812
+                </a>
+                <a href="mailto:shivamkanvar25@gmail.com" class="contact-link email-link">
+                    ✉️ shivamkanvar25@gmail.com
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

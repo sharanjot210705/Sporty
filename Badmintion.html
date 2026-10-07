@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Badminton | The Fastest Racket Sport</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, 'Inter', sans-serif;
+            background: #0a0f1e;
+            color: #eef2ff;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* modern gradient header */
+        header {
+            background: linear-gradient(135deg, #0b2b3b 0%, #0a1a2a 100%);
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "🏸";
+            font-size: 140px;
+            opacity: 0.08;
+            position: absolute;
+            bottom: -30px;
+            right: 20px;
+            pointer-events: none;
+        }
+
+        .marquee-text {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            background: linear-gradient(120deg, #fff, #ffd966);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-weight: 800;
+        }
+
+        /* modern navigation pills */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 1.2rem 1rem;
+            background: rgba(10, 25, 40, 0.85);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,215,0,0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .nav-links a {
+            color: #f0f4ff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            transition: all 0.25s ease;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(4px);
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            background: #ffb347;
+            color: #0a0f1e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(255,180,70,0.3);
+        }
+
+        /* main content container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.8rem;
+        }
+
+        /* card style sections */
+        .section-card {
+            background: rgba(18, 25, 45, 0.7);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            padding: 2rem 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .section-card:hover {
+            border-color: rgba(255, 180, 60, 0.5);
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        h1 u, h2 u, .section-card h2 u {
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #ffb347, #ffdd88);
+            margin: 0.6rem auto 0;
+            border-radius: 4px;
+        }
+
+        h2 {
+            font-size: 1.9rem;
+            margin: 1.5rem 0 1rem 0;
+            color: #ffdd99;
+            border-left: 5px solid #ffb347;
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin: 1.2rem 0 0.6rem;
+            color: #ffd966;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            color: #dee5f0;
+        }
+
+        /* modern images with border & shadow */
+        .img-wrapper {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .img-wrapper img {
+            max-width: 100%;
+            border-radius: 1.8rem;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,200,100,0.3);
+            transition: all 0.3s;
+            background: #11171f;
+        }
+
+        .img-wrapper img:hover {
+            transform: scale(1.01);
+            box-shadow: 0 25px 35px -8px black;
+        }
+
+        /* rules grid or special style */
+        .rule-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .rule-card {
+            background: #0f1625;
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            flex: 1 1 260px;
+            border-left: 4px solid #ffb347;
+            transition: all 0.2s;
+        }
+
+        .rule-card strong {
+            color: #ffc857;
+            font-size: 1.2rem;
+        }
+
+        /* equipment gallery style */
+        .equip-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        .equip-item {
+            background: #0e1424;
+            border-radius: 1.5rem;
+            padding: 1rem;
+            width: 260px;
+            text-align: center;
+            transition: all 0.25s;
+            border: 1px solid #2a3348;
+        }
+
+        .equip-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            background: #fff;
+        }
+
+        .equip-item h4 {
+            font-size: 1.3rem;
+            color: #ffcf8a;
+            margin-bottom: 0.5rem;
+        }
+
+        /* back to top button */
+        .go-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #ffb347;
+            color: #0a0f1e;
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 1rem 0 2rem;
+            transition: all 0.2s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .go-top:hover {
+            background: #ff9e1f;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px -5px rgba(255,180,70,0.5);
+        }
+
+        /* footer modern */
+        footer {
+            background: linear-gradient(90deg, #07121c, #0b1a24);
+            margin-top: 2rem;
+            padding: 1.5rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,200,100,0.3);
+            font-size: 0.9rem;
+            color: #b9c7d9;
+        }
+
+        /* responsive */
+        @media (max-width: 780px) {
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+            .nav-links {
+                gap: 0.8rem;
+            }
+            .nav-links a {
+                padding: 0.3rem 0.9rem;
+                font-size: 0.8rem;
+            }
+            .section-card {
+                padding: 1.2rem;
+            }
+        }
+
+        /* custom list styling */
+        ul, .custom-list {
+            margin: 0.8rem 0 1rem 1.8rem;
+            color: #cdd9ff;
+        }
+        li {
+            margin: 0.4rem 0;
+        }
+        .badge {
+            background: #ffb34720;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            display: inline-block;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div style="padding: 1.2rem 0 0.8rem 0; text-align: center;">
+        <marquee direction="left" scrollamount="8" behavior="scroll" style="color: white;">
+            <span class="marquee-text">🏸 <u>BADMINTON</u> 🏸 &nbsp;|&nbsp; FASTEST RACKET SPORT &nbsp;|&nbsp; OLYMPIC DISCIPLINE &nbsp;|&nbsp; POWER & AGILITY</span>
+        </marquee>
+        <p style="font-size: 1rem; letter-spacing: 1px; padding-bottom: 12px; color: #cfe3ff;">Smash • Drive • Drop • Rally</p>
+    </div>
+</header>
+
+<div class="nav-links">
+    <a href="#intro">🏸 Introduction</a>
+    <a href="#his">📜 History</a>
+    <a href="#rul">⚖️ Rules</a>
+    <a href="#equi">🎾 Equipment</a>
+</div>
+
+<main class="container">
+    <!-- INTRODUCTION SECTION -->
+    <div class="section-card" id="intro">
+        <h1><u>🏆 INTRODUCTION TO BADMINTON</u></h1>
+        <p><strong>Badminton</strong> is a dynamic racket sport played with shuttlecocks across a net. Whether in singles or doubles, it combines explosive speed, precision, and breathtaking agility. The shuttlecock, often called a "birdie," can reach speeds over 400 km/h, making badminton the <strong style="color:#ffb347">fastest racket sport in the world</strong>.</p>
+        <p>Originating from the ancient game of battledore and shuttlecock, modern badminton became an Olympic sport in 1992. Today, it thrives globally with thrilling competitions like the All England Open, BWF World Championships, and the Olympic Games. Players require exceptional stamina, wrist flexibility, and tactical intelligence.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Olympics_2012_Mixed_Doubles_Final.jpg/500px-Olympics_2012_Mixed_Doubles_Final.jpg" alt="Olympic Badminton Mixed Doubles Final">
+            <p class="badge" style="margin-top: 8px;">🏅 Olympic action – mixed doubles final</p>
+        </div>
+        <p>Points are scored by landing the shuttlecock inside the opponent’s court. Matches are played in a best-of-three games format (21 points each). The sport demands supreme fitness: anaerobic endurance, lightning reflexes, and core strength. From backyard leisure to professional arena, badminton unites millions across Asia, Europe, and the Americas.</p>
+    </div>
+
+    <!-- HISTORY SECTION -->
+    <div class="section-card" id="his">
+        <h1><u>📖 HISTORY OF BADMINTON</u></h1>
+        <p>The roots of badminton stretch back centuries across Eurasia with games using a shuttlecock. However, the modern version emerged in <strong>British India</strong> during the 19th century, where military officers added a net and competitive rules. The game was known as "Poona" (after the city of Pune) before gaining popularity in England.</p>
+        <p>In 1873, the Duke of Beaufort introduced the sport to his guests at <strong>Badminton House</strong> in Gloucestershire – giving the game its enduring name. By 1893, the Badminton Association of England published the first official rules, and the All England Open Championships began in 1899, still one of the most prestigious tournaments today.</p>
+        <div class="img-wrapper">
+            <img src="https://www.badmintonpassion.com/wp-content/uploads/2020/02/The-History-of-Badminton-of-Featured-Image.jpg" alt="Historical badminton artwork">
+        </div>
+        <p>The International Badminton Federation (now BWF) was founded in 1934. While Denmark dominated European play for decades, Asian nations — China, Indonesia, Malaysia, South Korea, Japan, and India — have risen as powerhouses. Badminton became a full Olympic medal sport in Barcelona 1992, and mixed doubles was added in 1996. Today, it’s one of Asia’s most beloved sports with record-breaking viewership.</p>
+        <p>🏸 <em>Did you know?</em> The fastest badminton smash recorded is 426 km/h (264.7 mph) by Malaysia's Tan Boon Heong.</p>
+    </div>
+
+    <!-- RULES SECTION (enhanced with cards) -->
+    <div class="section-card" id="rul">
+        <h1><u>📏 OFFICIAL RULES & REGULATIONS</u></h1>
+        <p>Based on the BWF Laws of Badminton, here are the essential rules that shape every match.</p>
+        
+        <h2>🏟️ Court Dimensions</h2>
+        <p>The court is 13.4 meters long. For singles, width is 5.18 m; for doubles, it’s 6.1 m. The net stands 1.55 m at the edges and 1.524 m at the center. A clear space above the court is mandatory for competitive play.</p>
+        <div class="img-wrapper">
+            <img src="https://badmintonbros.home.blog/wp-content/uploads/2019/07/badmintoncourt.jpg" alt="Badminton court diagram">
+        </div>
+        
+        <h2>🎯 Serving Rules</h2>
+        <div class="rule-grid">
+            <div class="rule-card"><strong>🚫 Below waist</strong><br>The shuttle must be struck below 1.15 meters from the surface.</div>
+            <div class="rule-card"><strong>🔄 Diagonal service</strong><br>Server and receiver stand in opposite service courts.</div>
+            <div class="rule-card"><strong>⚡ Even = right</strong><br>When score is even, serve from right court; odd from left court (singles).</div>
+            <div class="rule-card"><strong>👥 Doubles rotation</strong><br>Only one serve attempt; service rotates between partners after winning a rally.</div>
+        </div>
+        <div class="img-wrapper">
+            <img src="https://lh3.googleusercontent.com/proxy/iODaZ8XJhaVhpthigDDt8VZ-kevvziK-zooBGbLH4q_cOYB0F-MfYyj80cXB2-2dtCezQRSXmoc-0wklUfmEfkP9DlonBBFyiji5t6Pd2hXOEg5NaZx-ECxzuKl3wWeOzQQvc2vaZcg" alt="Serving position illustration">
+        </div>
+        
+        <h2>🏅 Scoring System</h2>
+        <p>Matches are played to <strong>21 points</strong> (rally scoring). If the score reaches 20-all, a player must lead by 2 points to win, up to a maximum of 30 points. A match consists of the best of three games. Players change ends after the first game and, if a third game is played, at 11 points.</p>
+        <p>Lets are called for unforeseen disturbances or if the receiver is not ready. The rally is replayed without changing the score.</p>
+    </div>
+
+    <!-- EQUIPMENT SECTION with modern cards -->
+    <div class="section-card" id="equi">
+        <h1><u>🛠️ EQUIPMENT & GEAR</u></h1>
+        <p>High-quality gear defines performance. Professional players customize every element – from string tension to grip thickness.</p>
+        
+        <div class="equip-grid">
+            <div class="equip-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREv8VDYOOXi4MT4xvwfQe4pqaGE4K13Z_6Zw&s" alt="Badminton racket">
+                <h4>🏸 Rackets</h4>
+                <p>Carbon fibre composite, 70–95g. Stiff frames deliver power and control. Isometric head shapes enlarge the sweet spot.</p>
+            </div>
+            <div class="equip-item">
+                <img src="https://www.badmintonbay.com/image/data/misc/stringing-method/stringing-method-type-1.png" alt="Stringing pattern">
+                <h4>🎗️ Strings</h4>
+                <p>Thin gauges (0.62–0.73mm) with tensions 18–36 lbs. Pro players prefer high tension (26–32 lbs) for precision.</p>
+            </div>
+            <div class="equip-item">
+                <img src="https://blog.playo.co/wp-content/uploads/2017/05/towel-grip-badminton-racke.jpg" alt="Towel grip">
+                <h4>✋ Grips</h4>
+                <p>PU synthetic or towel grips for sweat absorption. Overgrips allow frequent changes without damaging the handle.</p>
+            </div>
+            <div class="equip-item">
+                <img src="https://cdn.prod.website-files.com/5b44edefca321a1e2d0c2aa6/5fc436dda7287d64124d9d10_Dimensions-Sports-Badminton-Shuttlecock-Dimensions.svg" alt="Shuttlecock diagram">
+                <h4>🏑 Shuttlecock</h4>
+                <p>16 feathers embedded in cork base — speed up to 400 km/h. Nylon shuttles offer durability for recreational play.</p>
+            </div>
+        </div>
+        
+        <h2>🎯 Additional Gear</h2>
+        <p>Badminton shoes with gum rubber soles ensure excellent grip on wooden courts. Wristbands, headbands, and court bags complete the professional setup. Advanced players also use vibration dampeners and custom weighting systems.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Olympics_2012_Mixed_Doubles_Final.jpg/500px-Olympics_2012_Mixed_Doubles_Final.jpg" alt="Action shot equipment in use" style="max-width: 480px;">
+        </div>
+        <p>Choosing the right equipment elevates your game. Beginners should opt for lightweight, balanced rackets, while competitive players explore head-heavy or head-light frames depending on playing style (offensive vs. defensive).</p>
+    </div>
+    
+    <!-- extra fun facts / summary -->
+    <div style="background: linear-gradient(145deg, #10182c, #0a1122); border-radius: 1.8rem; padding: 1.5rem; margin-bottom: 2rem; border-left: 6px solid #ffb347;">
+        <h3 style="margin: 0 0 0.5rem 0;">💡 Did you know?</h3>
+        <p>🏅 Badminton made its Olympic debut in 1992 (Barcelona).<br>
+        🚀 The fastest women's smash is 372 km/h (Tai Tzu Ying).<br>
+        🌏 Indonesia, China, and Denmark are legendary badminton nations with countless world champions.<br>
+        🏸 The world's largest badminton tournament is the Thomas Cup (men) and Uber Cup (women).</p>
+    </div>
+    
+    <div style="text-align: center;">
+        <a href="#" class="go-top" id="backToTopBtn">⬆️ BACK TO TOP</a>
+    </div>
+</main>
+
+<footer>
+    <p>🏸 <strong>BADMINTON HUB</strong> — All about the fastest racket sport. Stay fit, play smart.</p>
+    <p>&copy; 2026 Badminton Legacy | Educational Reference | BWF Official Rules</p>
+    <p style="font-size: 0.8rem; margin-top: 0.5rem;">🏅 “The art of badminton is deception, speed, and spirit.”</p>
+</footer>
+
+<script>
+    // smooth scroll for anchor links and back to top
+    document.querySelectorAll('.nav-links a, .go-top').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if(targetId === '#') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } 
+            else if(targetId && targetId !== '#') {
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+
+    // extra for back to top button id
+    const topBtn = document.getElementById('backToTopBtn');
+    if(topBtn) {
+        topBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+</script>
+
+</body>
+</html>

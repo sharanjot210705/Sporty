@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Cricket | The Gentleman's Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, 'Inter', sans-serif;
+            background: #0a0f1e;
+            color: #eef2ff;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* modern gradient header */
+        header {
+            background: linear-gradient(135deg, #1a472a 0%, #0a2f1a 100%);
+            border-bottom: 2px solid rgba(255, 193, 7, 0.4);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "🏏";
+            font-size: 140px;
+            opacity: 0.08;
+            position: absolute;
+            bottom: -30px;
+            right: 20px;
+            pointer-events: none;
+        }
+
+        .marquee-text {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            background: linear-gradient(120deg, #fff, #ffd966);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-weight: 800;
+        }
+
+        /* modern navigation pills */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 1.2rem 1rem;
+            background: rgba(10, 25, 40, 0.85);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,193,7,0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .nav-links a {
+            color: #f0f4ff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            transition: all 0.25s ease;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(4px);
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            background: #f9a825;
+            color: #0a0f1e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(249,168,37,0.4);
+        }
+
+        /* main content container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.8rem;
+        }
+
+        /* card style sections */
+        .section-card {
+            background: rgba(18, 25, 45, 0.7);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            padding: 2rem 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 193, 7, 0.25);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .section-card:hover {
+            border-color: rgba(255, 193, 7, 0.6);
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #f9a825, #ffd966);
+            margin: 0.6rem auto 0;
+            border-radius: 4px;
+        }
+
+        h2 {
+            font-size: 1.9rem;
+            margin: 1.5rem 0 1rem 0;
+            color: #ffdd99;
+            border-left: 5px solid #f9a825;
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin: 1.2rem 0 0.6rem;
+            color: #ffd966;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            color: #dee5f0;
+        }
+
+        /* modern images with border & shadow */
+        .img-wrapper {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .img-wrapper img {
+            max-width: 100%;
+            border-radius: 1.8rem;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,200,100,0.3);
+            transition: all 0.3s;
+            background: #11171f;
+        }
+
+        .img-wrapper img:hover {
+            transform: scale(1.01);
+            box-shadow: 0 25px 35px -8px black;
+        }
+
+        /* rules grid */
+        .rule-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .rule-card {
+            background: #0f1625;
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            flex: 1 1 260px;
+            border-left: 4px solid #f9a825;
+            transition: all 0.2s;
+        }
+
+        .rule-card strong {
+            color: #ffc857;
+            font-size: 1.2rem;
+        }
+
+        /* format cards */
+        .format-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin: 1.8rem 0;
+            justify-content: center;
+        }
+
+        .format-card {
+            background: linear-gradient(145deg, #121b2e, #0c1222);
+            border-radius: 1.8rem;
+            padding: 1.5rem;
+            flex: 1 1 220px;
+            text-align: center;
+            border: 1px solid rgba(249,168,37,0.4);
+            transition: transform 0.2s;
+        }
+
+        .format-card:hover {
+            transform: translateY(-6px);
+            border-color: #f9a825;
+        }
+
+        .format-card h4 {
+            font-size: 1.6rem;
+            color: #ffcf8a;
+            margin-bottom: 0.6rem;
+        }
+
+        /* equipment gallery */
+        .equip-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        .equip-item {
+            background: #0e1424;
+            border-radius: 1.5rem;
+            padding: 1rem;
+            width: 260px;
+            text-align: center;
+            transition: all 0.25s;
+            border: 1px solid #2a3348;
+        }
+
+        .equip-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            background: #fff;
+        }
+
+        .equip-item h4 {
+            font-size: 1.3rem;
+            color: #ffcf8a;
+            margin-bottom: 0.5rem;
+        }
+
+        /* go to top button */
+        .go-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f9a825;
+            color: #0a0f1e;
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 1rem 0 2rem;
+            transition: all 0.2s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .go-top:hover {
+            background: #ffb74d;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px -5px rgba(249,168,37,0.5);
+        }
+
+        /* footer */
+        footer {
+            background: linear-gradient(90deg, #07121c, #0b1a24);
+            margin-top: 2rem;
+            padding: 1.5rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,193,7,0.3);
+            font-size: 0.9rem;
+            color: #b9c7d9;
+        }
+
+        /* responsive */
+        @media (max-width: 780px) {
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+            .nav-links {
+                gap: 0.8rem;
+            }
+            .nav-links a {
+                padding: 0.3rem 0.9rem;
+                font-size: 0.8rem;
+            }
+            .section-card {
+                padding: 1.2rem;
+            }
+        }
+
+        .badge {
+            background: #f9a82520;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .stats-highlight {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-between;
+            margin: 1.5rem 0;
+        }
+        .stat-box {
+            background: #0a1020;
+            padding: 1rem;
+            border-radius: 1.2rem;
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+            border: 1px solid #ffb34740;
+        }
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #f9a825;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div style="padding: 1.2rem 0 0.8rem 0; text-align: center;">
+        <marquee direction="left" scrollamount="8" behavior="scroll" style="color: white;">
+            <span class="marquee-text">🏏 <u>CRICKET</u> 🏏 &nbsp;|&nbsp; THE GENTLEMAN'S GAME &nbsp;|&nbsp; ICC WORLD CUP &nbsp;|&nbsp; TEST • ODI • T20</span>
+        </marquee>
+        <p style="font-size: 1rem; letter-spacing: 1px; padding-bottom: 12px; color: #cfe3ff;">Bat • Bowl • Field • Celebrate</p>
+    </div>
+</header>
+
+<div class="nav-links">
+    <a href="#intro">🏏 Introduction</a>
+    <a href="#his">📜 History</a>
+    <a href="#formats">🔄 Formats</a>
+    <a href="#rul">⚖️ Rules</a>
+    <a href="#equi">🏏 Equipment</a>
+</div>
+
+<main class="container">
+    <!-- INTRODUCTION SECTION -->
+    <div class="section-card" id="intro">
+        <h1><u>🏆 INTRODUCTION TO CRICKET</u></h1>
+        <p><strong>Cricket</strong> is a bat-and-ball game played between two teams of eleven players on a circular or oval-shaped field. At the center lies a 22-yard pitch with wickets at each end. The game blends explosive power, tactical genius, and timeless tradition. With over <strong>2.5 billion fans worldwide</strong>, cricket is the second most popular sport on the planet.</p>
+        <p>Matches range from the traditional five-day Test cricket — the ultimate examination of skill and endurance — to the high-octane T20 format where games finish in about three hours. The ICC Cricket World Cup, T20 World Cup, and iconic rivalries like The Ashes (England vs Australia) captivate audiences across continents.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/India_vs_Australia_ODI.jpg/640px-India_vs_Australia_ODI.jpg" alt="Cricket match action" onerror="this.src='https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=600'">
+            <p class="badge" style="margin-top: 8px;">🏏 High-voltage cricket action — players in full flow</p>
+        </div>
+        <p>The objective: score more runs than the opposition. A batsman hits the ball and runs between the wickets, while the bowling side aims to dismiss batters through bowled, caught, LBW, or run-out. Cricket demands athleticism, sharp reflexes, and deep strategy — captains set fields, rotate bowlers, and adjust tactics over hours or days.</p>
+        <div class="stats-highlight">
+            <div class="stat-box"><div class="stat-number">2.5B+</div><div>Global Fans</div></div>
+            <div class="stat-box"><div class="stat-number">106</div><div>ICC Member Nations</div></div>
+            <div class="stat-box"><div class="stat-number">1877</div><div>First Test Match</div></div>
+            <div class="stat-box"><div class="stat-number">1975</div><div>First World Cup</div></div>
+        </div>
+    </div>
+
+    <!-- HISTORY SECTION -->
+    <div class="section-card" id="his">
+        <h1><u>📖 HISTORY OF CRICKET</u></h1>
+        <p>Cricket originated in <strong>south-east England</strong> during the 16th century. The earliest definite reference dates from 1598. By the 18th century, it became England's national sport. The Hambledon Club and later Marylebone Cricket Club (MCC) — founded in 1787 — became the custodians of the Laws of Cricket.</p>
+        <p>The first international match took place in 1844 between USA and Canada. However, the historic <strong>1877 Test match</strong> between England and Australia at the Melbourne Cricket Ground marked the birth of Test cricket. The rivalry gave rise to <em>The Ashes</em> in 1882, one of sport's greatest traditions.</p>
+        <div class="img-wrapper">
+            <img src="https://www.espncricinfo.com/db/PICTURES/CMS/331100/331149.1.jpg" alt="Old cricket photograph" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/First_Australian_cricket_team_1878.jpg/640px-First_Australian_cricket_team_1878.jpg'">
+        </div>
+        <p>Cricket expanded with the British Empire, taking root in India, Australia, West Indies, South Africa, and New Zealand. <strong>One Day Internationals (ODIs)</strong> emerged in the 1970s, with the first Cricket World Cup held in 1975. The revolutionary <strong>T20 format</strong> arrived in 2003, culminating in the first ICC T20 World Cup in 2007. Today, franchise leagues like the Indian Premier League (IPL) combine sport and entertainment, attracting global superstars.</p>
+        <p>🏆 <em>Iconic moments:</em> Kapil Dev's 1983 World Cup triumph, Sachin Tendulkar's 100 international centuries, and Ben Stokes' 2019 World Cup heroics.</p>
+    </div>
+
+    <!-- FORMATS SECTION -->
+    <div class="section-card" id="formats">
+        <h1><u>🔄 FORMATS OF THE GAME</u></h1>
+        <p>Cricket offers three main international formats, each with unique appeal.</p>
+        <div class="format-grid">
+            <div class="format-card">
+                <h4>🏛️ TEST</h4>
+                <p>5 days • Red ball<br>Timeless tradition, tactical chess. Each team bats twice. Ultimate test of endurance and skill.</p>
+                <span class="badge">Since 1877</span>
+            </div>
+            <div class="format-card">
+                <h4>📅 ODI</h4>
+                <p>50 overs per side<br>One Day Internationals balance aggression and patience. World Cup every 4 years.</p>
+                <span class="badge">50 overs</span>
+            </div>
+            <div class="format-card">
+                <h4>⚡ T20</h4>
+                <p>20 overs per side<br>Explosive batting, big sixes, high-energy. IPL, Big Bash, and World T20.</p>
+                <span class="badge">Fastest format</span>
+            </div>
+        </div>
+        <p>Domestic leagues like the IPL (Indian Premier League), BBL, and The Hundred add innovation, while first-class cricket remains the breeding ground for Test stars.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Lord%27s_Pavilion.jpg/640px-Lord%27s_Pavilion.jpg" alt="Lord's Cricket Ground" onerror="this.src='https://images.pexels.com/photos/1460880/pexels-photo-1460880.jpeg?w=600'">
+            <p class="badge">🏟️ Lord's Cricket Ground — "The Home of Cricket"</p>
+        </div>
+    </div>
+
+    <!-- RULES SECTION -->
+    <div class="section-card" id="rul">
+        <h1><u>📏 CRICKET RULES & LAWS</u></h1>
+        <p>Governed by the <strong>Marylebone Cricket Club (MCC)</strong> and <strong>International Cricket Council (ICC)</strong>, cricket's laws ensure fair play across all formats.</p>
+        
+        <h2>🏏 Basic Structure</h2>
+        <div class="rule-grid">
+            <div class="rule-card"><strong>🎯 11 players each</strong><br>Two teams, one bats while the other bowls and fields. Innings end after 10 wickets or overs limit.</div>
+            <div class="rule-card"><strong>🔄 Runs & wickets</strong><br>Batsmen score runs by running or hitting boundaries (4 or 6 runs). Bowling side aims to dismiss batters.</div>
+            <div class="rule-card"><strong>⚖️ Umpires & DRS</strong><br>Two on-field umpires, third umpire for reviews. Decision Review System (DRS) adds technology.</div>
+        </div>
+        
+        <h2>📌 Dismissal Methods</h2>
+        <div class="rule-grid">
+            <div class="rule-card"><strong>🎯 Bowled</strong><br>Ball hits stumps, dislodging bails.</div>
+            <div class="rule-card"><strong>🧤 Caught</strong><br>Batsman hits ball, fielder catches before it touches ground.</div>
+            <div class="rule-card"><strong>🦵 LBW</strong><br>Leg Before Wicket — ball hits pad in line with stumps.</div>
+            <div class="rule-card"><strong>🏃 Run out</strong><br>Fielders hit stumps before batsman completes run.</div>
+            <div class="rule-card"><strong>⚡ Stumped</strong><br>Wicketkeeper removes bails when batter out of crease.</div>
+        </div>
+        
+        <h2>📊 Scoring System</h2>
+        <p>Runs are accumulated through running between wickets (1-3 runs) or hitting boundaries: <strong style="color:#f9a825;">4 runs</strong> if ball bounces before crossing rope, <strong style="color:#f9a825;">6 runs</strong> if it clears the boundary on the full. Extras (no-balls, wides, byes) add to the total. The team with more runs wins.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Cricket_pitch.svg/640px-Cricket_pitch.svg.png" alt="Cricket pitch diagram">
+            <p class="badge">📐 The 22-yard pitch — creases, stumps, and bowling zones</p>
+        </div>
+    </div>
+
+    <!-- EQUIPMENT SECTION -->
+    <div class="section-card" id="equi">
+        <h1><u>🛠️ CRICKET EQUIPMENT</u></h1>
+        <p>From willow bats to protective gear, cricket equipment blends tradition with cutting-edge innovation.</p>
+        
+        <div class="equip-grid">
+            <div class="equip-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Cricket_Bat%2C_ball_and_stumps.jpg/640px-Cricket_Bat%2C_ball_and_stumps.jpg" alt="Cricket bat and ball" onerror="this.src='https://images.unsplash.com/photo-1566577134770-3d85bb3a9cc4?w=260'">
+                <h4>🏏 Bat & Ball</h4>
+                <p>Willow bat (English or Kashmir) with curved face. Leather ball with seam — red for Tests, white for limited-overs, pink for day-night.</p>
+            </div>
+            <div class="equip-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Cricket_stumps_eng.jpg/640px-Cricket_stumps_eng.jpg" alt="Wickets" onerror="this.src='https://images.pexels.com/photos/1263100/pexels-photo-1263100.jpeg?w=260'">
+                <h4>🎯 Stumps & Bails</h4>
+                <p>Three stumps (28 inches tall) with two bails on top. LED stumps with zing bails used in modern cricket.</p>
+            </div>
+            <div class="equip-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Cricket_helmet%2C_pads%2C_gloves.jpg/640px-Cricket_helmet%2C_pads%2C_gloves.jpg" alt="Protective gear" onerror="this.src='https://images.unsplash.com/photo-1566577134770-3d85bb3a9cc4?w=260'">
+                <h4>🛡️ Protection</h4>
+                <p>Helmet with grille, chest guard, arm guard, thigh pad, gloves, and abdominal guard (box). Essential for safety.</p>
+            </div>
+            <div class="equip-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Cricket_shoes.jpg/640px-Cricket_shoes.jpg" alt="Cricket shoes" onerror="this.src='https://images.pexels.com/photos/1054229/pexels-photo-1054229.jpeg?w=260'">
+                <h4>👟 Footwear</h4>
+                <p>Spiked shoes for grip on turf. Rubber-soled shoes for artificial or indoor surfaces.</p>
+            </div>
+        </div>
+        
+        <h2>📡 Modern Innovations</h2>
+        <p>Technology enhances the sport: <strong>Snickometer, Hawk-Eye, Hot Spot</strong> aid umpiring decisions. Players use lightweight carbon-fiber bats, advanced helmet designs, and smart sensors for performance analysis. The Kookaburra, Dukes, and SG are premier ball manufacturers across regions.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/DRS_Hawkeye.jpg/640px-DRS_Hawkeye.jpg" alt="DRS HawkEye" onerror="this.src='https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=600'">
+            <p class="badge">🖥️ DRS — Decision Review System revolutionizes fairness</p>
+        </div>
+    </div>
+    
+    <!-- LEGENDS & FACTS -->
+    <div style="background: linear-gradient(145deg, #10182c, #0a1122); border-radius: 1.8rem; padding: 1.5rem; margin-bottom: 2rem; border-left: 6px solid #f9a825;">
+        <h3 style="margin: 0 0 0.5rem 0;">🌟 Cricket Icons & Records</h3>
+        <p>🏏 <strong>Sachin Tendulkar</strong> — Most runs in international cricket (34,357) & 100 centuries.<br>
+             🏆 <strong>MS Dhoni</strong> — Only captain to win all three ICC trophies (T20 WC, ODI WC, Champions Trophy).</p>
+        🎯 <strong>Muttiah Muralitharan</strong> — 800 Test wickets (all-time highest).<br>
+        🚀 <strong>Virat Kohli</strong> — Fastest to 10,000 ODI runs.<br>
+        🌏 <strong>Don Bradman</strong> — Unmatched Test batting average of 99.94.<br>
+       
+        <p>🏟️ <em>"Cricket is a game of glorious uncertainties."</em> — Every delivery brings new possibilities.</p>
+    </div>
+    
+    <div style="text-align: center;">
+        <a href="#" class="go-top" id="backToTopBtn">⬆️ BACK TO TOP</a>
+    </div>
+</main>
+
+<footer>
+    <p>🏏 <strong>CRICKET HERITAGE</strong> — Celebrate the spirit of the gentleman's game</p>
+    <p>&copy; 2026 Cricket Legacy | ICC Official Rules | MCC Laws of Cricket</p>
+    <p style="font-size: 0.8rem; margin-top: 0.5rem;">🏆 “It's not whether you win or lose, it's how you play the game.”</p>
+</footer>
+
+<script>
+    // smooth scroll for navigation and back to top
+    document.querySelectorAll('.nav-links a, .go-top').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if(targetId === '#') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } 
+            else if(targetId && targetId !== '#') {
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+
+    const topBtn = document.getElementById('backToTopBtn');
+    if(topBtn) {
+        topBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+</script>
+
+</body>
+</html>

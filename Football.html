@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Football | The Beautiful Game — Passion, Glory & Legacy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, 'Inter', sans-serif;
+            background: #0a1a1a;
+            color: #e8f0ef;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* modern gradient header with football energy */
+        header {
+            background: linear-gradient(135deg, #1a472a 0%, #0a2a1a 100%);
+            border-bottom: 2px solid rgba(218, 165, 32, 0.6);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "⚽";
+            font-size: 160px;
+            opacity: 0.08;
+            position: absolute;
+            bottom: -30px;
+            right: 10px;
+            pointer-events: none;
+            transform: rotate(10deg);
+        }
+
+        .marquee-text {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            background: linear-gradient(120deg, #fff, #f3d382, #d4af37);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            font-weight: 800;
+        }
+
+        /* modern navigation pills - glass effect */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 1rem 1.5rem;
+            background: rgba(10, 40, 28, 0.9);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(218, 165, 32, 0.5);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        .nav-links a {
+            color: #fffae6;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1.4rem;
+            border-radius: 40px;
+            transition: all 0.25s ease;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(4px);
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            background: #d4af37;
+            color: #0a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(212, 175, 55, 0.4);
+        }
+
+        /* main container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.8rem;
+        }
+
+        /* card style sections — deep teal with gold accents */
+        .section-card {
+            background: rgba(15, 45, 38, 0.7);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            padding: 2rem 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(218, 165, 32, 0.35);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .section-card:hover {
+            border-color: rgba(218, 165, 32, 0.8);
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37, #f3d572);
+            margin: 0.6rem auto 0;
+            border-radius: 4px;
+        }
+
+        h2 {
+            font-size: 1.9rem;
+            margin: 1.5rem 0 1rem 0;
+            color: #f3d572;
+            border-left: 5px solid #d4af37;
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin: 1.2rem 0 0.6rem;
+            color: #e8cd7a;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            color: #e2f3ed;
+        }
+
+        /* images styling */
+        .img-wrapper {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .img-wrapper img {
+            max-width: 100%;
+            border-radius: 1.8rem;
+            box-shadow: 0 20px 30px -8px rgba(0,0,0,0.6);
+            border: 1px solid rgba(218, 165, 32, 0.5);
+            transition: all 0.3s;
+            background: #1e3a2f;
+        }
+
+        .img-wrapper img:hover {
+            transform: scale(1.01);
+            box-shadow: 0 25px 35px -8px black;
+        }
+
+        /* rule cards grid (football specific) */
+        .rule-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .rule-card {
+            background: #0f2f26;
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            flex: 1 1 260px;
+            border-left: 4px solid #d4af37;
+            transition: all 0.2s;
+        }
+
+        .rule-card strong {
+            color: #f3d572;
+            font-size: 1.2rem;
+        }
+
+        /* equipment gallery style — football gear */
+        .equip-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        .equip-item {
+            background: #102e24;
+            border-radius: 1.5rem;
+            padding: 1rem;
+            width: 260px;
+            text-align: center;
+            transition: all 0.25s;
+            border: 1px solid #3c6e58;
+        }
+
+        .equip-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            background: #f5f5f5;
+        }
+
+        .equip-item h4 {
+            font-size: 1.3rem;
+            color: #f3d572;
+            margin-bottom: 0.5rem;
+        }
+
+        /* back to top button */
+        .go-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #d4af37;
+            color: #0a1a1a;
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 1rem 0 2rem;
+            transition: all 0.2s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .go-top:hover {
+            background: #e5c458;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px -5px rgba(212, 175, 55, 0.6);
+        }
+
+        footer {
+            background: linear-gradient(90deg, #082218, #0a3222);
+            margin-top: 2rem;
+            padding: 1.5rem;
+            text-align: center;
+            border-top: 1px solid rgba(218, 165, 32, 0.6);
+            font-size: 0.9rem;
+            color: #cfe6df;
+        }
+
+        /* responsive */
+        @media (max-width: 780px) {
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+            .nav-links {
+                gap: 0.8rem;
+            }
+            .nav-links a {
+                padding: 0.3rem 0.9rem;
+                font-size: 0.8rem;
+            }
+            .section-card {
+                padding: 1.2rem;
+            }
+        }
+
+        ul, .custom-list {
+            margin: 0.8rem 0 1rem 1.8rem;
+            color: #cdf3e8;
+        }
+        li {
+            margin: 0.4rem 0;
+        }
+        .badge {
+            background: #d4af3720;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            display: inline-block;
+            font-weight: 500;
+        }
+        .stat-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+            margin: 1.8rem 0;
+        }
+        .stat-card {
+            background: #12382b;
+            border-radius: 1.5rem;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            min-width: 140px;
+            border-bottom: 3px solid #d4af37;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #f3d572;
+        }
+        .stadium-card {
+            background: linear-gradient(145deg, #153d30, #0d2c22);
+            border-radius: 1.5rem;
+            padding: 1.2rem;
+            margin: 1rem 0;
+            border-right: 3px solid #d4af37;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div style="padding: 1.2rem 0 0.8rem 0; text-align: center;">
+        <marquee direction="left" scrollamount="8" behavior="scroll" style="color: white;">
+            <span class="marquee-text">⚽ <u>FOOTBALL</u> ⚽ &nbsp;|&nbsp; THE BEAUTIFUL GAME &nbsp;|&nbsp; FIFA WORLD CUP • UEFA • PREMIER LEAGUE • LEGENDS</span>
+        </marquee>
+        <p style="font-size: 1rem; letter-spacing: 1px; padding-bottom: 12px; color: #f2e5b6;">Dribble • Pass • Score • Celebrate — Where Nations Unite</p>
+    </div>
+</header>
+
+<div class="nav-links">
+    <a href="#intro">⚽ Introduction</a>
+    <a href="#his">📜 History</a>
+    <a href="#rul">📏 Rules</a>
+    <a href="#equi">🏆 Gear & Stadiums</a>
+</div>
+
+<main class="container">
+    <!-- INTRODUCTION SECTION with football action image -->
+    <div class="section-card" id="intro">
+        <h1><u>🏆 INTRODUCTION TO FOOTBALL</u></h1>
+        <p><strong>Football (Soccer)</strong> is the world's most popular sport, played between two teams of eleven players each, aiming to score by propelling the ball into the opponent's goal. With over 3.5 billion fans globally, it transcends cultures, languages, and borders. From the favelas of Brazil to the stadiums of Europe, football is passion, art, and identity.</p>
+        <p>The pinnacle is the FIFA World Cup, held every four years, drawing billions of viewers. Club football features legendary competitions like the UEFA Champions League, English Premier League, La Liga, and Serie A. Icons like Pelé, Diego Maradona, Lionel Messi, and Cristiano Ronaldo have become global heroes, defining eras with their brilliance.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Lionel_Messi_20180626.jpg/800px-Lionel_Messi_20180626.jpg" alt="Lionel Messi dribbling for Argentina" loading="lazy">
+            <p class="badge">🐐 Lionel Messi — 8-time Ballon d'Or winner, World Cup champion</p>
+        </div>
+        <p>Matches last 90 minutes (two 45-minute halves) with stoppage time. The sport demands technical skill, tactical intelligence, stamina, and teamwork. Whether it's a last-minute winner in a derby or a stunning bicycle kick, football creates unforgettable moments that echo through generations.</p>
+    </div>
+
+    <!-- HISTORY SECTION with origins and legends -->
+    <div class="section-card" id="his">
+        <h1><u>📜 HISTORY OF FOOTBALL</u></h1>
+        <p>Ancient civilizations played ball games resembling football — from China's cuju (2nd century BC) to Mesoamerican games. Modern football was codified in 1863 in England when the Football Association (FA) established uniform rules, separating rugby from soccer. The first FA Cup was held in 1871, and the sport spread rapidly across the British Empire.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Cuju_1.jpg/600px-Cuju_1.jpg" alt="Ancient Chinese cuju painting" loading="lazy">
+            <p class="badge">🏮 Cuju — ancient Chinese football precursor dating back 2,000 years</p>
+        </div>
+        <p>FIFA was founded in 1904, and the first World Cup took place in Uruguay in 1930. The tournament became a global spectacle, with legendary triumphs like Brazil's 1970 team, Argentina's 1986 Maradona-led victory, and France's 1998 home glory. Women's football surged with the first FIFA Women's World Cup in 1991, and icons like Mia Hamm, Marta, and Megan Rapinoe elevated the game.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Pelé_1963.jpg/600px-Pelé_1963.jpg" alt="Pelé in action for Brazil" loading="lazy">
+            <p class="badge">👑 Pelé — three-time World Cup winner, global ambassador of football</p>
+        </div>
+        <p>The UEFA Champions League (est. 1955 as European Cup) became the elite club competition. Today, leagues like the Premier League attract global audiences, with clubs like Real Madrid, Barcelona, Bayern Munich, and Manchester United boasting hundreds of millions of fans worldwide.</p>
+        <div class="stat-grid">
+            <div class="stat-card"><div class="stat-number">5</div><div>World Cups (Brazil)</div></div>
+            <div class="stat-card"><div class="stat-number">8</div><div>Ballon d'Or (Messi)</div></div>
+            <div class="stat-card"><div class="stat-number">14</div><div>UCL Titles (Real Madrid)</div></div>
+            <div class="stat-card"><div class="stat-number">1930</div><div>First World Cup</div></div>
+        </div>
+        <p>⚽ <em>Did you know?</em> The fastest goal in football history was scored in 2.1 seconds by Nawaf Al-Abed in 2017. The highest-scoring international match was Australia vs American Samoa (31-0) in 2001.</p>
+    </div>
+
+    <!-- RULES SECTION with pitch diagram and key regulations -->
+    <div class="section-card" id="rul">
+        <h1><u>📏 OFFICIAL RULES & REGULATIONS</u></h1>
+        <p>Governed by the International Football Association Board (IFAB) and FIFA, the Laws of the Game ensure consistency and fairness across 200+ nations.</p>
+        
+        <h2>🏟️ Pitch Dimensions & Positions</h2>
+        <p>The field is rectangular, 100-110m long and 64-75m wide. Goals are 7.32m wide and 2.44m high. Each team includes a goalkeeper, defenders, midfielders, and forwards. Offside rule: an attacker cannot be closer to the goal line than both the ball and the second-last opponent when the ball is played.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Football_pitch_metric.svg/800px-Football_pitch_metric.svg.png" alt="Football pitch diagram with markings" loading="lazy">
+            <p class="badge">📐 Official football pitch dimensions (IFAB standard)</p>
+        </div>
+        
+        <h2>⏱️ Key Rules & Match Structure</h2>
+        <div class="rule-grid">
+            <div class="rule-card"><strong>🟨 Cards & Fouls</strong><br>Yellow = caution; Red = ejection (two yellows or serious foul). Direct/indirect free kicks awarded for fouls; penalty kicks for fouls inside the box.</div>
+            <div class="rule-card"><strong>⛔ Offside Rule</strong><br>Player in offside position cannot interfere if ahead of ball and second-last defender when pass is made — essential for attacking tactics.</div>
+            <div class="rule-card"><strong>🔄 Substitutions</strong><br>Up to 5 substitutions in most competitions (3 in traditional rules). Subbed players cannot re-enter.</div>
+            <div class="rule-card"><strong>⌛ Stoppage & VAR</strong><br>Referee adds time for injuries, substitutions, time-wasting. Video Assistant Referee (VAR) reviews critical decisions: goals, penalties, red cards, mistaken identity.</div>
+        </div>
+        
+        <h2>🏆 Competitions & Scoring</h2>
+        <p>A goal is scored when the entire ball crosses the goal line. Matches can end in a draw (league format) or go to extra time (30 mins) and penalty shootouts in knockout stages. The away goals rule was abolished in UEFA competitions in 2021. The World Cup final is the most-watched sporting event globally, with over 1.5 billion viewers in 2022.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Cristiano_Ronaldo_2018.jpg/600px-Cristiano_Ronaldo_2018.jpg" alt="Cristiano Ronaldo taking a free kick" loading="lazy">
+            <p class="badge">🚀 Cristiano Ronaldo — all-time leading goalscorer in football history</p>
+        </div>
+        <p>Modern innovations include goal-line technology (Hawk-Eye) to confirm goals, and semi-automated offside technology used in major tournaments to improve accuracy.</p>
+    </div>
+
+    <!-- EQUIPMENT & GEAR SECTION with football essentials -->
+    <div class="section-card" id="equi">
+        <h1><u>🛠️ FOOTBALL EQUIPMENT & ICONIC STADIUMS</u></h1>
+        <p>From the ball to specialized boots, equipment evolves with technology. Stadiums become cathedrals of emotion, hosting historic moments.</p>
+        
+        <div class="equip-grid">
+            <div class="equip-item">
+                <img src="https://images.unsplash.com/photo-1577471488278-16eec37ffcc2?w=500&auto=format" alt="Professional football boots" loading="lazy">
+                <h4>⚽ Boots</h4>
+                <p>Lightweight synthetic or kangaroo leather, studded soles for traction. Firm ground (FG), soft ground (SG), artificial turf (AG) variants. Precision, touch, and speed optimized.</p>
+            </div>
+            <div class="equip-item">
+                <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=500&auto=format" alt="Football with stadium background" loading="lazy">
+                <h4>🏆 The Ball</h4>
+                <p>Size 5 standard for professionals. Thermally bonded panels for aerodynamics. Iconic balls: Adidas Telstar (1970), Al Rihla (2022). Weight: 410-450g, circumference 68-70cm.</p>
+            </div>
+            <div class="equip-item">
+                <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=500&auto=format" alt="Goalkeeper gloves" loading="lazy">
+                <h4>🧤 Goalkeeper Gear</h4>
+                <p>Specialized gloves with latex palms for grip and cushioning. Padded jerseys, shorts, and protective caps to dive and save with confidence.</p>
+            </div>
+            <div class="equip-item">
+                <img src="https://images.unsplash.com/photo-1580086319619-3ed498161c77?w=500&auto=format" alt="Camp Nou stadium" loading="lazy">
+                <h4>🏟️ Legendary Venues</h4>
+                <p>Camp Nou (Barcelona), Wembley (London), Maracanã (Rio), Santiago Bernabéu (Madrid) — stadiums that hold history, passion, and 80,000+ fans.</p>
+            </div>
+        </div>
+        
+        <h2>🧢 Apparel & Technology</h2>
+        <p>Moisture-wicking jerseys, shorts, and socks designed for peak athletic performance. Teams wear distinctive kits that become cultural symbols. GPS vests track player metrics: distance covered (up to 12km per match), sprint count, heart rate. Smart balls and wearable tech aid coaching analysis.</p>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Aitana_Bonmat%C3%AD_2023_%28cropped%29.jpg/600px-Aitana_Bonmat%C3%AD_2023_%28cropped%29.jpg" alt="Aitana Bonmatí lifting trophy" loading="lazy" style="max-width: 480px;">
+            <p class="badge">🌟 Aitana Bonmatí — Ballon d'Or winner, symbol of modern women's football</p>
+        </div>
+        <p>Women's football has seen exponential growth, with record-breaking attendances and investment. The 2023 FIFA Women's World Cup attracted 2 million spectators, showcasing elite talent globally.</p>
+        
+        <h2>🏆 Football's Global Impact</h2>
+        <div class="stadium-card">
+            <p><strong>⚡ The FIFA World Cup</strong> — the most watched sporting event on Earth. The 2022 final between Argentina and France drew over 1.5 billion viewers. Icons like Pelé, Maradona, Zidane, and Messi achieved immortality through World Cup glory.</p>
+            <p><strong>🌍 UEFA Champions League</strong> — club football's pinnacle. Real Madrid holds 14 titles, with legendary nights like the "Remontada" and Istanbul 2005 epitomizing football drama.</p>
+        </div>
+        <div class="img-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Wembley-Stadion_2013.jpg/800px-Wembley-Stadion_2013.jpg" alt="Wembley Stadium iconic arch" loading="lazy">
+            <p class="badge">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Wembley Stadium — the home of English football and legendary finals</p>
+        </div>
+    </div>
+    
+    <!-- extra facts & records section -->
+    <div style="background: linear-gradient(145deg, #123f31, #0b2f24); border-radius: 1.8rem; padding: 1.5rem; margin-bottom: 2rem; border-left: 6px solid #d4af37;">
+        <h3 style="margin: 0 0 0.5rem 0;">💡 Football Milestones & Unforgettable Records</h3>
+        <p>🏆 Most World Cup titles: Brazil — 5 (1958, 1962, 1970, 1994, 2002).<br>
+        ⚽ All-time top scorer (official): Cristiano Ronaldo — 900+ career goals.<br>
+        🎯 Most Ballon d'Or awards: Lionel Messi — 8.<br>
+        🏟️ Highest attendance: 199,854 at Maracanã for 1950 World Cup final.<br>
+        🚀 Fastest hat-trick: 70 seconds (Alex Torr, 2013).<br>
+        💰 Most expensive transfer: Neymar to PSG — €222 million (2017).<br>
+        🏅 Women's World Cup wins: USA — 4 titles (1991, 1999, 2015, 2019).</p>
+        <div class="img-wrapper" style="margin-top: 1rem;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Maradona_Mundial_86_%28cropped%29.jpg/600px-Maradona_Mundial_86_%28cropped%29.jpg" alt="Diego Maradona with World Cup trophy" loading="lazy" style="max-width: 450px;">
+            <p class="badge">🇦🇷 Diego Maradona — the "Hand of God" and immortal 1986 World Cup champion</p>
+        </div>
+    </div>
+    
+    <div style="text-align: center;">
+        <a href="#" class="go-top" id="backToTopBtn">⬆️ BACK TO TOP</a>
+    </div>
+</main>
+
+<footer>
+    <p>⚽ <strong>BEAUTIFUL GAME HQ</strong> — Celebrating football's past, present, and future. United by passion.</p>
+    <p>&copy; 2026 Football Legacy | FIFA & UEFA References | #TheBeautifulGame</p>
+    <p style="font-size: 0.8rem; margin-top: 0.5rem;">🏆 “Football is the most important of the less important things.” — Arrigo Sacchi</p>
+</footer>
+
+<script>
+    // smooth scroll for anchor links and back to top
+    document.querySelectorAll('.nav-links a, .go-top').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if(targetId === '#') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } 
+            else if(targetId && targetId !== '#') {
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+
+    // additional safety for back to top button
+    const topBtn = document.getElementById('backToTopBtn');
+    if(topBtn) {
+        topBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+</script>
+
+</body>
+</html>
